@@ -12,7 +12,7 @@ echo "In php...<br />";
 
 $fh = fopen('file.txt', 'a');
 
-fwrite($fh, 'appending to file\n');
+fwrite($fh, "appending to file\n");
 fclose($fh);
 
 echo "File written...<br />";
