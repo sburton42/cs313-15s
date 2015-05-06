@@ -1,36 +1,51 @@
 <!DOCTYPE html>
 <html>
-<head>
-   <title>Testing Files</title>
-</head>
+	<head>
+		<title>Testing files</title>
+	</head>
 
-<body>
+	<body>
+		<div>
 
 <?php
 
-echo "In php...<br />";
+echo "This is from PHP...<br />";
 
-$fh = fopen('file.txt', 'a');
+$file = fopen("myFile.txt", "r");
 
-fwrite($fh, "appending to file\n");
-fclose($fh);
-
-echo "File written...<br />";
-
-$fh = fopen('file.txt', 'r');
-
-while ($line = fgets($fh))
+if ($file)
 {
-   echo "file content: $line<br />\n";
+	echo "The file is open<br />";
+
+	while ($line = fgets($file))
+	{
+		echo "This is from the file: $line<br />\n";
+	}
+
 }
 
-fclose($fh);
+// let's create the file
+$file = fopen("myFile.txt", "a");
 
-echo "done reading file<br />\n";
+if ($file)
+{	
+	fwrite($file, "Hello World\n");
+	fclose($file);
+}
+else
+{
+	die("File did not exist and could not be created.");
+}
+
+
+
+echo "Doing the rest of the things on the page...";
 
 ?>
 
 
-</body>
+		</div>
+
+	</body>
 
 </html>
